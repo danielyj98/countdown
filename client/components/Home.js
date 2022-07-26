@@ -1,5 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import Countdown from 'react-countdown'
+import Countdowns from './Countdowns'
+
 
 /**
  * COMPONENT
@@ -9,7 +12,8 @@ export const Home = props => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h3>Welcome, {username || 'Guest'}</h3>
+      <Countdowns />
     </div>
   )
 }
