@@ -9,9 +9,9 @@ export class AddCountdown extends React.Component {
     super(props);
     this.state = {
       name: '',
-      year: 2000,
-      month: 1,
-      day: 1
+      year: '',
+      month: '',
+      day: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
