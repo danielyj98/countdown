@@ -24,12 +24,19 @@ export const fetchCountdowns = () => {
   };
 };
 
+export const addCountdown = (countdown) => {
+  return async (dispatch) => {
+    const { data: created } = await axios.post('/api/countdowns', countdown);
+    dispatch(_addCountdown(created))
+  }
+}
+
 export default function countdownsReducer(state = [], action) {
   switch (action.type) {
     case SET_COUNTDOWNS:
       return action.countdowns;
-    // case ADD_COUNTDOWN:
-    //   return [...state, action.campus];
+    case ADD_COUNTDOWN:
+      return [...state, action.countdown];
     // case DELETE_CAMPUS:
     //   return state.filter((campus) => campus.id !== action.id);
     default:

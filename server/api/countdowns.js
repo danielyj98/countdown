@@ -16,6 +16,7 @@ router.get('/', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const countdown = await Countdown.create(req.body);
+    console.log(req.body)
     res.status(201).send(countdown);
   } catch (error) {
     next(error);

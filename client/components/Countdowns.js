@@ -30,9 +30,9 @@ export class Countdowns extends React.Component {
     const { countdowns } = this.props
     return (
       <div>
-        {countdowns.map((date, key) => {
+        {countdowns.map((date) => {
           return (
-            <div key={key}>
+            <div key={date.id}>
               <div>{date.name}</div>
               <div>{date.day}</div>
               {/* <Countdown date={date.date} /> */}
