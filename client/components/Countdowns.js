@@ -3,6 +3,35 @@ import { connect } from 'react-redux';
 import { fetchCountdowns } from '../store/countdowns';
 import Countdown from 'react-countdown';
 
+function dateConverter(num) {
+  switch (num) {
+    case 1:
+      return 'Jan';
+    case 2:
+      return 'Feb';
+    case 3:
+      return 'Mar';
+    case 4:
+      return 'Apr';
+    case 5:
+      return 'May';
+    case 6:
+      return 'Jun';
+    case 7:
+      return 'Jul';
+    case 8:
+      return 'Aug';
+    case 9:
+      return 'Sep';
+    case 10:
+      return 'Oct';
+    case 11:
+      return 'Nov';
+    case 12:
+      return 'Dec';
+  }
+}
+
 const dates = [
   {
     name: 'Birthday',
@@ -16,26 +45,25 @@ const dates = [
 ];
 
 export class Countdowns extends React.Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
-  
+
   componentDidMount() {
-    this.props.fetchCountdowns()
-    // console.log(this.props.countdowns)
+    this.props.fetchCountdowns();
   }
-  
+
   render() {
-    console.log(this.props.countdowns)
-    const { countdowns } = this.props
+    console.log(this.props.countdowns);
+    const { countdowns } = this.props;
     return (
       <div>
         {countdowns.map((date) => {
+          let clock = `${date.day} ${dateConverter(date.month)} ${date.year} 00:00:00 GMT`
           return (
             <div key={date.id}>
               <div>{date.name}</div>
-              <div>{date.day}</div>
-              {/* <Countdown date={date.date} /> */}
+              <Countdown date={Date.parse(clock)} />
             </div>
           );
         })}
@@ -52,13 +80,13 @@ export class Countdowns extends React.Component {
 }
 
 const mapState = (reduxState) => {
-  return {countdowns: reduxState.countdowns}
-}
+  return { countdowns: reduxState.countdowns };
+};
 
 const mapDispatch = (dispatch) => {
   return {
     fetchCountdowns: () => dispatch(fetchCountdowns())
-  }
-}
+  };
+};
 
-export default connect(mapState, mapDispatch)(Countdowns)
+export default connect(mapState, mapDispatch)(Countdowns);

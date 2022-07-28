@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCountdowns } from '../store/countdowns';
 import { addCountdown } from '../store/countdowns';
 import { Link } from 'react-router-dom';
 
@@ -49,7 +48,7 @@ export class AddCountdown extends React.Component {
           <input name="day" onChange={handleChange} value={day} />
 
           <button type="submit">Submit</button>
-          <Link to="/">Cancel</Link>
+          <Link to="/">back</Link>
         </form>
       </div>
     );
