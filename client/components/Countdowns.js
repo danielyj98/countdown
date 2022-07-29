@@ -58,15 +58,20 @@ export class Countdowns extends React.Component {
     const { countdowns } = this.props;
     return (
       <div>
-        {countdowns.map((date) => {
-          let clock = `${date.day} ${dateConverter(date.month)} ${date.year} 00:00:00 GMT`
-          return (
-            <div key={date.id}>
-              <div>{date.name}</div>
-              <Countdown date={Date.parse(clock)} />
-            </div>
-          );
-        })}
+        <div className="container">
+          <h2>Countdowns</h2>
+          {countdowns.map((date) => {
+            let clock = `${date.day} ${dateConverter(date.month)} ${
+              date.year
+            } 00:00:00 GMT`;
+            return (
+              <div key={date.id} className="countdown">
+                <div className='name'>{date.name}</div>
+                <Countdown className="time" date={Date.parse(clock)} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }

@@ -12,7 +12,6 @@ export const Home = props => {
 
   return (
     <div>
-      <h3>Welcome, {username || 'Guest'}</h3>
       <Countdowns />
     </div>
   )
